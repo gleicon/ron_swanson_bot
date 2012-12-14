@@ -1,0 +1,9 @@
+APScheduler==2.0.3
+bottle==0.11.4
+gevent==0.13.8
+greenlet==0.4.0
+httplib2==0.7.7
+oauth2==1.5.211
+python-twitter==0.8.2
+simplejson==2.6.2
+wsgiref==0.1.2
