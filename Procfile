@@ -1,2 +1,2 @@
-web: app.py
-worker: worker.py
+web: python app.py
+clock: python jobs.py
