@@ -32,5 +32,6 @@ if __name__ == '__main__':
     #scheduler.add_interval_job(send_random_message, minutes=59)
     scheduler.add_interval_job(send_random_message, seconds=30)
     scheduler.start()
+    print "Scheduler started"
     while True:
         gevent.sleep(10)
