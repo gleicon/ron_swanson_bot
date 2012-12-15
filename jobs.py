@@ -31,8 +31,7 @@ def initialize():
 
     print "Setting up scheduler"
     scheduler = Scheduler(standalone=True)
-    #scheduler.add_interval_job(send_random_message, minutes=59)
-    scheduler.add_interval_job(send_random_message, seconds=30)
+    scheduler.add_interval_job(send_random_message, minutes=59)
     scheduler.start()
     print "Scheduler started"
     while True:
