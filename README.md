@@ -6,18 +6,22 @@ You can either pay a worker dyno to run your job or keep it at it is running off
 
 To test locally:
 
+- you will need foreman, virtualenv, etc, etc
 - clone the repository
 - cd ron_swanson_bot
+- $ virtualenv --no-site-packages env
 - $ source env/bin/activate
-- $ pip install -r
+- $ pip install -r requirements.txt
 - To test locally
-    create an .env file with your tweet credencials
+    create an .env file with your tweet credencials using the following env vars:
 
-    CONSUMER_KEY=
-    CONSUMER_SECRET=
-    ACCESS_TOKEN=
-    ACCESS_TOKEN_SECRET=
-    
+    - CONSUMER_KEY=
+    - CONSUMER_SECRET=
+    - ACCESS_TOKEN=
+    - ACCESS_TOKEN_SECRET=
+
+    run with:
+
     $ foreman start
 
 - To deploy: 
