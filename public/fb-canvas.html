@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Achieve greatness with Ron Swanson</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <!-- Le styles -->
+    <link href="css/fbootstrap.min.css" rel="stylesheet">    
+    <style type="text/css">
+    body {padding: 20px 0;}
+    </style>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  </head>
+
+  <body>
+
+<div class="container canvas">
+
+<section id="hero">    
+  <!-- Main hero unit for a primary marketing message or call to action -->
+  <div class="hero-unit">
+      <h1>Ron Swanson</h1>
+    <p>Quick and simple instructions on how to achieve greatness</p>
+  </div>
+  
+  <div class="row">
+      <div class="span2"> 
+          <img src="swanson_thumb.png">
+      </div>
+    <div class="span10">
+        <h2>Perform these instructions immediately, son.</h2>
+        <ul>
+            <li>"Like" or "Authorize" this application</li>
+            <li>Follow <a href='http://twitter.com/ron_swanson_bot'>@ron_swanson_bot</a> at Twitter</li>
+            <li>Grab a copy of the <a href='park-recs-pyramid_1500.jpg' target="_blank">Pyramid</a></li> 
+            <li>Watch the videos below</li>
+        </ul>
+        <br><br>
+    </div>
+  </div>
+  <div class="row">
+      <div class="span12">
+          <h4>Publish this wise saying into your wall (reload this page for a new quote)</h4>
+          <div class="well">
+              <span id="quote"></span>
+          </div>
+      </div>
+  </div>
+  </section>  
+
+<!-- Media
+================================================== -->
+<section id="media">
+  <div class="page-header">
+  </div>
+  
+  <ul class="media-grid">
+    <li>
+      <a href="#">
+         <iframe width="360" height="200" src="http://www.youtube.com/embed/V6c7Vw6R33E" frameborder="0" allowfullscreen></iframe><br><br>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+         <iframe width="360" height="200" src="http://www.youtube.com/embed/bwGat4i8pJI" frameborder="0" allowfullscreen></iframe><br><br>
+      </a>
+    </li>
+  </ul>
+
+ 
+</section>
+
+
+    </div> <!-- /container -->
+    <script language="javascript" src="js/jquery.min.js" type="text/javascript"></script>                                                                                   
+    <script>
+        main = function(){
+            $.get('/api/quote', function(data) {
+                $('#quote').html(data);
+            }); 
+        }
+        $(main);
+    </script>
+  </body>
+</html>
