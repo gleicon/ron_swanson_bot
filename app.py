@@ -19,6 +19,10 @@ def index():
 def index():
     return bottle.static_file('index.html', 'public/')
 
+@bottle.post('/fb')
+def fb():
+    return bottle.static_file('fb-canvas.html', 'public/')
+
 @bottle.get('/<filepath:path>')
 def server_static(filepath):
     return bottle.static_file(filepath, 'public/')
