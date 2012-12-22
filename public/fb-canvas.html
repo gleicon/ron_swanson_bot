@@ -88,7 +88,15 @@
 
       };
 
-        FB.login(function(response) {
+      (function() {
+        var e = document.createElement('script');
+        e.type = 'text/javascript';
+        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+        e.async = true;
+        document.getElementById('fb-root').appendChild(e);
+      }());
+      
+      FB.login(function(response) {
            if (response.authResponse) {
              console.log('Welcome!  Fetching your information.... ');
              FB.api('/me', function(response) {
@@ -99,13 +107,6 @@
            }
          });
 
-      (function() {
-        var e = document.createElement('script');
-        e.type = 'text/javascript';
-        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-        e.async = true;
-        document.getElementById('fb-root').appendChild(e);
-      }());
 
         load_quote = function(){
             $.get('/api/quote', function(data) {
