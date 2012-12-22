@@ -87,7 +87,6 @@
 
         post_quote = function(){
             quote = $('#quote').html();
-            console.log(quote);
             var params = {};
             params['message'] = quote;
             params['name'] = 'Ron Swanson';
@@ -98,9 +97,11 @@
               
             FB.api('/me/feed', 'post', params, function(response) {
               if (!response || response.error) {
-                $('#post_response').html('Error posting message, try again.');
+                $('#quote').html('Error posting message, try again.');
+                console.log(response);
               } else {
-                $('#post_response').html('Message posted');
+                $('#quote').html('Message posted');
+                console.log(response);
               }
 });
         }
