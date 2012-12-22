@@ -34,7 +34,8 @@
       <h1>Ron Swanson</h1>
     <p>Quick and simple instructions on how to achieve greatness</p>
   </div>
-  
+   <div id="fb-root"></div> 
+    <fb:like send="true" width="450" show_faces="true" />
   <div class="row">
       <div class="span2"> 
           <img src="swanson_thumb.png">
@@ -42,29 +43,30 @@
     <div class="span10">
         <h2>Perform these instructions immediately, son.</h2>
         <ul>
-            <li>"Like" or "Authorize" this application</li>
+            <li>Post a quote on your timeline</li>
             <li>Follow <a href='http://twitter.com/ron_swanson_bot'>@ron_swanson_bot</a> at Twitter</li>
             <li>Grab a copy of the <a href='park-recs-pyramid_1500.jpg' target="_blank">Pyramid</a></li> 
             <li>Watch the videos below</li>
         </ul>
-        <br><br>
+        <br>
     </div>
   </div>
   <div class="row">
       <div class="span12">
-          <h4>Publish this wise saying into your wall (reload this page for a new quote)</h4>
+          <h4>Ron Swanson says </h4>
           <div class="well">
               <span id="quote"></span>
           </div>
-      </div>
+          <input type="button" class="btn primary" id="reload_quote" value="Reload">
+              <a href='#' class="btn primary" id="post_quote">Post on your wall</a>
+          </div>
   </div>
   </section>  
 
 <!-- Media
 ================================================== -->
 <section id="media">
-  <div class="page-header">
-  </div>
+<br>
   
   <ul class="media-grid">
     <li>
@@ -85,13 +87,52 @@
 
     </div> <!-- /container -->
     <script language="javascript" src="js/jquery.min.js" type="text/javascript"></script>                                                                                   
+    
     <script>
-        main = function(){
+      window.fbAsyncInit = function() {
+        FB.init({appId: '{{fb_app_id}}', status: true, cookie: true,
+                 xfbml: true});
+      };
+
+      (function() {
+        var e = document.createElement('script');
+        e.type = 'text/javascript';
+        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+        e.async = true;
+        document.getElementById('fb-root').appendChild(e);
+      }());
+
+        load_quote = function(){
             $.get('/api/quote', function(data) {
                 $('#quote').html(data);
             }); 
         }
-        $(main);
+
+        post_quote = function(){
+            quote = $('#quote').html();
+            console.log(quote);
+            var params = {};
+            params['message'] = quote;
+            params['name'] = 'Ron Swanson';
+            params['description'] = 'Man that has achieved greatness';
+            params['link'] = 'http://apps.facebook.com/summer-mourning/';
+            params['picture'] = 'https://ronswansonbot.herokuapp.com/swanson_thumb.png';
+            params['caption'] = 'Mr Swanson';
+              
+            FB.api('/me/feed', 'post', params, function(response) {
+              if (!response || response.error) {
+                $('#post_response').html('Error posting message, try again.');
+              } else {
+                $('#post_response').html('Message posted');
+              }
+});
+        }
+        
+        $(function(){
+            load_quote();
+            $('#reload_quote').click(load_quote);
+            $('#post_quote').click(post_quote);
+        });
     </script>
   </body>
 </html>
